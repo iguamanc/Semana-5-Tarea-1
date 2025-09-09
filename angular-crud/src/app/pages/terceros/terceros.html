@@ -1,0 +1,37 @@
+<h2>Lista de Terceros</h2>
+<div>
+    
+    <button type="button" class="btn btn-primary btn-success" [routerLink]="['/terceros/crear']">Crear Tercero</button>
+    
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombres</th>
+            <th>ci-ruc</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Direccion</th>
+            <th>Accion</th>
+        </tr>
+    </thead>  
+  <tbody>
+
+     @for(tercero of lista_terceros$; track tercero.id; let i = $index){
+        <tr>
+          <td>{{ i + 1 }}</td>
+          <td>{{ tercero.nombres }}</td>
+          <td>{{ tercero.cedula_ruc }}</td>
+          <td>{{ tercero.email }}</td>
+          <td>{{ tercero.telefono }}</td>
+          <td>{{ tercero.direccion }}</td>          
+          <td>
+            <button class="btn btn-success" routerLink="/tercero/editar/{{ tercero.id }}">Editar</button>
+            <button class="btn btn-danger"  (click)="eliminarCliente(tercero.id!)">Eliminar</button>
+            </td>
+        </tr>
+        }
+
+  </tbody>
+</table>
